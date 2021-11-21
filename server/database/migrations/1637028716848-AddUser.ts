@@ -10,6 +10,7 @@ export class AddUser1637028716848 implements MigrationInterface {
             name: 'id',
             type: 'int',
             isPrimary: true,
+            isGenerated: true,
           },
           {
             name: 'name',
@@ -25,6 +26,7 @@ export class AddUser1637028716848 implements MigrationInterface {
             name: 'email',
             type: 'text',
             isNullable: false,
+            isUnique: true,
           },
         ],
       }),

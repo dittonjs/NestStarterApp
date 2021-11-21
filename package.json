@@ -6,7 +6,7 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
-    "typeorm": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js --config src/database/cli_config.ts",
+    "typeorm": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js --config server/database/cli_config.ts",
     "db:start": "pg_ctl status || pg_ctl start",
     "db:stop": "pg_ctl status && pg_ctl stop",
     "db:migration:create": "cd server/migrations && typeorm migration:create -n ",
@@ -39,7 +39,6 @@
     "dotenv": "^10.0.0",
     "hbs": "^4.1.2",
     "jsonwebtoken": "^8.5.1",
-    "morgan": "^1.10.0",
     "pg": "^8.7.1",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",

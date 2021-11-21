@@ -2,9 +2,9 @@ import './env';
 import * as fs from 'fs';
 import { NestFactory } from '@nestjs/core';
 import { join } from 'path';
-import * as morgan from 'morgan';
-import { AppModule } from './app.module';
 import { NestExpressApplication } from '@nestjs/platform-express';
+import * as cookieParser from 'cookie-parser';
+import { AppModule } from './app.module';
 
 async function bootstrap() {
   let httpsOptions;
@@ -16,8 +16,10 @@ async function bootstrap() {
   }
   const app = await NestFactory.create<NestExpressApplication>(AppModule, {
     httpsOptions,
+    logger: ['verbose'],
   });
-  app.use(morgan('tiny'));
+
+  app.use(cookieParser());
   app.useStaticAssets(join(__dirname, '..', 'static'));
   app.setBaseViewsDir(join(__dirname, '../', 'views'));
   app.setViewEngine('hbs');

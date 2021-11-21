@@ -1,39 +1,10 @@
-import { useState } from 'react';
-import { setConstantValue } from 'typescript';
+import { BrowserRouter } from 'react-router-dom';
+import { Router } from './components/router';
 
-const App = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
-  const submit = () => {
-    fetch('/sign_in', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ email, password }),
-    });
-  };
-
+export const App = () => {
   return (
-    <>
-      <div>
-        <input
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-      </div>
-      <div>
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-      </div>
-      <button type="button" onClick={submit}>Login</button>
-    </>
+    <BrowserRouter>
+      <Router />
+    </BrowserRouter>
   );
 };
-
-export default App;

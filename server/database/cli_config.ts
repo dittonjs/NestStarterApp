@@ -7,16 +7,16 @@ export = process.env.NODE_ENV === 'development'
       port: 5432,
       database: process.env.DATABASE_URL,
       autoLoadEntities: true,
-      migrations: ['src/database/migrations/*.ts'],
+      migrations: ['server/database/migrations/*.ts'],
       cli: {
-        migrationsDir: 'src/database/migrations',
+        migrationsDir: 'server/database/migrations',
       },
     }
   : {
       url: process.env.DATABASE_URL,
       ssl: { rejectUnauthorized: true },
-      migrations: ['src/database/migrations/*.ts'],
+      migrations: ['server/database/migrations/*.ts'],
       cli: {
-        migrationsDir: 'src/database/migrations',
+        migrationsDir: 'server/database/migrations',
       },
     };

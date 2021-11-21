@@ -1,7 +1,17 @@
-import { Body, Controller, Post, Res } from '@nestjs/common';
-import { UsersService } from 'server/providers/services/users.service';
-import { SignInDto } from '../dto/sign_in.dto';
+import {
+  Body,
+  Controller,
+  HttpException,
+  HttpStatus,
+  Post,
+  Res,
+} from '@nestjs/common';
 import { Response } from 'express';
+import * as jwt from 'jsonwebtoken';
+import { UsersService } from 'server/providers/services/users.service';
+import { SignInDto } from 'server/dto/sign_in.dto';
+
+
 // this is kind of a misnomer because we are doing token based auth
 // instead of session based auth
 @Controller()
@@ -9,19 +19,30 @@ export class SessionsController {
   constructor(private usersService: UsersService) {}
 
   @Post('/sign_in')
-  async signIn(@Body() body: SignInDto, @Res() res: Response) {
-    console.log("DO I GET RAN?")
-    const verified = await this.usersService.verify(
+  async signIn(
+    @Body() body: SignInDto,
+    @Res({ passthrough: true }) res: Response,
+  ) {
+    const { verified, user } = await this.usersService.verify(
       body.username,
       body.password,
     );
 
     if (!verified) {
-      res.status(400);
-      console.log("here too??")
-      res.json({ message: 'Invalid email or password' });
-      return;
+      throw new HttpException(
+        'Invalid email or password.',
+        HttpStatus.BAD_REQUEST,
+      );
     }
-    res.json({ success: true });
+    // Write JWT to cookie and send with response.
+    const token = jwt.sign(
+      {
+        user_id: user.id,
+      },
+      process.env.ENCRYPTION_KEY,
+      { expiresIn: '1h' },
+    );
+    res.cookie('_token', token);
+    return { token };
   }
 }
