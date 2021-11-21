@@ -6,7 +6,7 @@ import {
   Post,
   Res,
 } from '@nestjs/common';
-import bcrypt from 'bcrypt';
+import * as bcrypt from 'bcrypt';
 import { Response } from 'express';
 import * as jwt from 'jsonwebtoken';
 import { CreateUserDto } from 'server/dto/create_user.dto';
