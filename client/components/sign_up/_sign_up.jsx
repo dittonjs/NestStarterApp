@@ -1,6 +1,10 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { useNavigate } from 'react-router';
+import { SettingsContext } from '../../utils/settings_context';
 
 export const SignUp = () => {
+  const [, dispatch] = useContext(SettingsContext);
+  const navigate = useNavigate();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [emailConfirmation, setEmailConfirmation] = useState('');
@@ -29,20 +33,21 @@ export const SignUp = () => {
       setErrorMessage('Name cannot be blank.');
       return;
     }
-    try {
-      await fetch('/users', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          name,
-          email,
-          password,
-        }),
-      });
-    } catch (e) {
-      console.log(e.message);
+    const res = await fetch('/users', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        name,
+        email,
+        password,
+      }),
+    });
+    if (res.status === 201) {
+      const result = await res.json();
+      dispatch({ type: 'update', payload: { jwt: result.token } });
+      navigate('/');
     }
   };
 

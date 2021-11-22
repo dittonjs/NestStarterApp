@@ -1,8 +1,12 @@
-import { Controller, Get, Render } from '@nestjs/common';
+import { Controller, Get, Render, Req } from '@nestjs/common';
+import { Request } from 'express';
 
 @Controller()
 export class AppController {
   @Get()
   @Render('index')
-  index() {}
+  index(@Req() req: Request) {
+    const jwt = req.cookies['_token'];
+    return { jwt };
+  }
 }

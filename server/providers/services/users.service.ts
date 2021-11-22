@@ -30,6 +30,6 @@ export class UsersService {
       password,
       user.password_hash,
     );
-    return { verified, user };
+    return { verified, user: verified ? user : null };
   }
 }

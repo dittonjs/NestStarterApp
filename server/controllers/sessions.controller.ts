@@ -1,9 +1,11 @@
 import {
   Body,
   Controller,
+  Delete,
   HttpException,
   HttpStatus,
   Post,
+  Redirect,
   Res,
 } from '@nestjs/common';
 import { Response } from 'express';
@@ -18,13 +20,13 @@ import { SignInDto } from 'server/dto/sign_in.dto';
 export class SessionsController {
   constructor(private usersService: UsersService) {}
 
-  @Post('/sign_in')
-  async signIn(
+  @Post('/sessions')
+  async create(
     @Body() body: SignInDto,
     @Res({ passthrough: true }) res: Response,
   ) {
     const { verified, user } = await this.usersService.verify(
-      body.username,
+      body.email,
       body.password,
     );
 
@@ -44,5 +46,11 @@ export class SessionsController {
     );
     res.cookie('_token', token);
     return { token };
+  }
+
+  @Delete('/sessions')
+  async destroy(@Res({ passthrough: true }) res: Response) {
+    res.clearCookie('_token');
+    return { success: true };
   }
 }

@@ -7,12 +7,12 @@ import { SignUp } from './sign_up/_sign_up';
 
 export const Router = () => {
   const [settings] = useContext(SettingsContext);
-  const { JWT } = settings;
+  const { jwt } = settings;
   return (
     <Routes>
       <Route
         path="/"
-        element={JWT ? <Home /> : <Navigate replace to="signin" />} // no JWT means not logged in
+        element={jwt ? <Home /> : <Navigate replace to="signin" />} // no jwt means not logged in
       />
       <Route path="signin" element={<SignIn />} />
       <Route path="signup" element={<SignUp />} />
