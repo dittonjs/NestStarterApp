@@ -18,7 +18,7 @@ export class AddUser1637028716848 implements MigrationInterface {
             isNullable: false,
           },
           {
-            name: 'password_hash',
+            name: 'passwordHash',
             type: 'text',
             isNullable: false,
           },

@@ -11,12 +11,12 @@ export class UsersService {
     private usersRespository: Repository<User>,
   ) {}
 
-  findBy(options: Record<string, any>) {
-    return this.usersRespository.findOne(options);
+  findBy(options: Record<string, any>, relations: string[] = []) {
+    return this.usersRespository.findOne(options, { relations });
   }
 
-  find(id: number) {
-    return this.usersRespository.findOne(id);
+  find(id: number, relations: string[] = []) {
+    return this.usersRespository.findOne(id, { relations });
   }
 
   create(user: User) {
@@ -24,12 +24,9 @@ export class UsersService {
   }
 
   async verify(email: string, password: string) {
-    const user = await this.usersRespository.findOne({ email });
+    const user = await this.usersRespository.findOne({ email }, { relations: ['refreshTokens'] });
     if (!user) return { verified: false, user: null };
-    const verified: boolean = await bcrypt.compare(
-      password,
-      user.password_hash,
-    );
+    const verified: boolean = await bcrypt.compare(password, user.passwordHash);
     return { verified, user: verified ? user : null };
   }
 }

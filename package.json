@@ -9,7 +9,7 @@
     "typeorm": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js --config server/database/cli_config.ts",
     "db:start": "pg_ctl status || pg_ctl start",
     "db:stop": "pg_ctl status && pg_ctl stop",
-    "db:migration:create": "cd server/migrations && typeorm migration:create -n ",
+    "db:migration:create": "cd server/database/migrations && typeorm migration:create -n ",
     "db:migrate": "yarn db:start && yarn typeorm migration:run",
     "db:migrate:undo": "yarn db:start && yarn typeorm migration:revert",
     "prebuild": "rimraf dist",
@@ -26,8 +26,8 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "client:build": "parcel build ./client/index.js --dist-dir static",
-    "client:watch": "parcel watch ./client/index.js --dist-dir static"
+    "client:build": "cd client && yarn build",
+    "client:watch": "cd client && yarn watch"
   },
   "dependencies": {
     "@nestjs/common": "^8.0.0",
@@ -62,7 +62,6 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^3.4.0",
     "jest": "^27.0.6",
-    "parcel": "^2.0.1",
     "prettier": "^2.4.1",
     "purdy": "^3.5.1",
     "repl": "^0.1.3",
