@@ -12,7 +12,7 @@ export const Router = () => {
     <Routes>
       <Route
         path="/"
-        element={authToken ? <Home /> : <Navigate replace to="signin" />} // no jwt means not logged in
+        element={authToken ? <Home /> : <Navigate replace to="signin" />} // no token means not logged in
       />
       <Route path="signin" element={<SignIn />} />
       <Route path="signup" element={<SignUp />} />

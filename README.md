@@ -24,16 +24,21 @@ $ npm install -g yarn
 Create a file in the root called `.env` and copy the contents of `.env.example`
 
 ### Dependencies
-To install the dependencies run
+To install the server dependencies run
 ```bash
 $ yarn # this is same thing as `yarn install`
+```
+
+To install the client dependencies run
+```bash
+$ cd client && yarn && cd ..
 ```
 
 ### Database
 Create the database
 ```bash
-$ pc_ctl start # this starts postgres
-$ createdb neststarterappdevelopement # creates a postgres database
+$ pg_ctl start # starts postgres
+$ createdb neststarterappdevelopment # creates a postgres database
 ```
 
 Run the migrations
@@ -44,24 +49,23 @@ yarn db:migrate
 Migrations need to be run again everytime a new migration is created
 
 ### SSL
-Create a ssl key and certificate an place them in the root directory
+Create a ssl key and certificate and place them in the root directory
 
 ```bash
 $ openssl req -x509 -newkey rsa:4096 -keyout private-key.pem -out public-cert.pem -sha256 -nodes
 ```
-Where this key will only be used for development you can leave all of the information blank.
+Enter `US` for the country code. Where this key will only be used for development you can leave all of the rest of information blank.
 
 ## Running the app
-
+To start the server run
 ```bash
-# development
-$ yarn start
-
 # watch mode
 $ yarn start:dev
+```
 
-# production mode
-$ yarn start:prod
+To start the client run
+```bash
+$ yarn client:watch
 ```
 
 ## Test

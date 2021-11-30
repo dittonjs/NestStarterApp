@@ -26,6 +26,8 @@ export const App = () => {
     setLoading(false);
   }, []);
 
+  // before displaying anything try getting a token using cookies,
+  // can display a loading screen here if desired
   if (loading) return null;
 
   return (
