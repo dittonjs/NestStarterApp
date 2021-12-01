@@ -8,15 +8,19 @@ export = process.env.NODE_ENV === 'development'
       database: process.env.DATABASE_URL,
       autoLoadEntities: true,
       migrations: ['server/database/migrations/*.ts'],
+      seeds: ['server/database/seeds.ts'],
       cli: {
         migrationsDir: 'server/database/migrations',
       },
+      entities: ['server/entities/**/*.entity.ts'],
     }
   : {
       url: process.env.DATABASE_URL,
       ssl: { rejectUnauthorized: true },
       migrations: ['server/database/migrations/*.ts'],
+      seeds: ['server/database/seeds.ts'],
       cli: {
         migrationsDir: 'server/database/migrations',
       },
+      entities: ['server/entities/**/*.entity.ts'],
     };
