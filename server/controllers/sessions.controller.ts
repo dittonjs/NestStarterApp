@@ -5,6 +5,9 @@ import { SignInDto } from 'server/dto/sign_in.dto';
 import { JwtService } from 'server/providers/services/jwt.service';
 import { RefreshTokensService } from 'server/providers/services/refresh_tokens.service';
 import { RefreshToken } from 'server/entities/refresh_token.entity';
+import { Skip } from 'server/decorators/skip.decorator';
+import { AuthGuard } from 'server/providers/guards/auth.guard';
+import { RolesService } from 'server/providers/services/roles.service';
 
 // this is kind of a misnomer because we are doing token based auth
 // instead of session based auth
@@ -13,10 +16,12 @@ export class SessionsController {
   constructor(
     private usersService: UsersService,
     private jwtService: JwtService,
+    private rolesService: RolesService,
     private refreshTokenService: RefreshTokensService,
   ) {}
 
   @Post('/sessions')
+  @Skip(AuthGuard)
   async create(@Body() body: SignInDto, @Res({ passthrough: true }) res: Response) {
     const { verified, user } = await this.usersService.verify(body.email, body.password);
 
@@ -32,8 +37,10 @@ export class SessionsController {
       // generate new refresh token
     }
 
+    const userRoles = await this.rolesService.findByIds(user.userRoles.map((ur) => ur.roleId));
+
     // JWT gets sent with response
-    const token = this.jwtService.issueToken({ userId: user.id });
+    const token = this.jwtService.issueToken({ userId: user.id, roles: userRoles.map((r) => r.key) });
 
     const refreshJwtToken = this.jwtService.issueRefreshToken({ id: refreshToken.id, userId: user.id });
 

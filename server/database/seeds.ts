@@ -1,7 +1,7 @@
 import { Factory, Seeder } from 'typeorm-seeding';
-import { Connection, Db } from 'typeorm';
+import { Connection } from 'typeorm';
 import { User } from '../entities/user.entity';
-import { Role } from '../entities/role.entity';
+import { Role, RoleKey } from '../entities/role.entity';
 import * as dotenv from 'dotenv';
 import * as bcrypt from 'bcrypt';
 import { UserRole } from '../entities/user_role.entity';
@@ -11,6 +11,7 @@ export default class Seeds implements Seeder {
   public async run(factory: Factory, connection: Connection): Promise<any> {
     // CREATE ROLES
     console.log('\nCreating Roles');
+
     const roleObjects = Role.ROLES.map((key) => ({ key }));
     const roleRepository = connection.getRepository(Role);
     for (const roleObj of roleObjects) {
@@ -26,10 +27,9 @@ export default class Seeds implements Seeder {
 
     // CREATE ADMIN USER
     const userRepository = connection.getRepository(User);
-    const userRoleRepository = connection.getRepository(UserRole);
     let adminUser = await userRepository.findOne({ email: process.env.ADMIN_EMAIL });
     if (!adminUser) {
-      const adminRole = await roleRepository.findOne({ key: Role.ADMIN });
+      const adminRole = await roleRepository.findOne({ key: RoleKey.ADMIN });
       console.log(`\nCreating Admin User with email ${process.env.ADMIN_EMAIL}`);
       console.log(adminRole);
       const passwordHash = await bcrypt.hash(process.env.ADMIN_PASSWORD, 10);

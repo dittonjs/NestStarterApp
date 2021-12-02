@@ -1,10 +1,16 @@
 import { useContext, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router';
 import { ApiContext } from '../../utils/api_context';
 import { AuthContext } from '../../utils/auth_context';
+import { RolesContext } from '../../utils/roles_context';
+import { Button } from '../common/button';
 
 export const Home = () => {
   const [, setAuthToken] = useContext(AuthContext);
   const api = useContext(ApiContext);
+  const roles = useContext(RolesContext);
+
+  const navigate = useNavigate();
 
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState(null);
@@ -26,11 +32,16 @@ export const Home = () => {
   }
 
   return (
-    <div>
+    <div className="p-4">
       <h1>Welcome {user.name}</h1>
-      <button type="button" onClick={logout}>
+      <Button type="button" onClick={logout}>
         Logout
-      </button>
+      </Button>
+      {roles.includes('admin') && (
+        <Button type="button" onClick={() => navigate('/admin')}>
+          Admin
+        </Button>
+      )}
     </div>
   );
 };

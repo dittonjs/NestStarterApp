@@ -6,6 +6,8 @@ import { AuthContext } from './utils/auth_context';
 import { useApi } from './utils/use_api';
 import { useJwtRefresh } from './utils/use_jwt_refresh';
 import './app.css';
+import { RolesContext } from './utils/roles_context';
+import { parseJwt } from './utils/parse_jwt';
 
 export const App = () => {
   const [authToken, setAuthToken] = useState(null);
@@ -26,16 +28,21 @@ export const App = () => {
     setLoading(false);
   }, []);
 
-  // before displaying anything try getting a token using cookies,
+  const jwtPayload = parseJwt(authToken);
+  console.log(jwtPayload);
+
+  // don't display anything while trying to get user token
   // can display a loading screen here if desired
   if (loading) return null;
 
   return (
     <AuthContext.Provider value={[authToken, setAuthToken]}>
       <ApiContext.Provider value={api}>
-        <HashRouter>
-          <Router />
-        </HashRouter>
+        <RolesContext.Provider value={jwtPayload.roles}>
+          <HashRouter>
+            <Router />
+          </HashRouter>
+        </RolesContext.Provider>
       </ApiContext.Provider>
     </AuthContext.Provider>
   );
