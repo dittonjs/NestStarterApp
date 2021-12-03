@@ -18,7 +18,7 @@ export default class Seeds implements Seeder {
       // only insert roles if not present already
       const role = await roleRepository.findOne(roleObj);
       if (!role) {
-        console.log(`Creating role '${role.key}'`);
+        console.log(`Creating role '${roleObj.key}'`);
         await roleRepository.insert(roleObj);
       } else {
         console.log(`Role '${role.key}' already exists`);
