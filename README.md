@@ -6,12 +6,12 @@ A starter app with Postgres, NestJS, and React
 ## Cloning the project
 This app is designed to used as a starting point for another application so you will want to clone the project into a folder that matches your app. Run
 ```bash
-$ git clone git@github.com:dittonjs/OnTheSpot.git <YourAppName>
+$ git clone git@github.com:dittonjs/NestStarterApp.git <YourAppName>
 ```
 
 Replace your app name with the name of your app, for example
 ```bash
-$ git clone git@github.com:dittonjs/OnTheSpot.git SpyChat
+$ git clone git@github.com:dittonjs/NestStarterApp.git SpyChat
 ```
 
 Next, go create a remote repository in github (or gitlab, or bitbucket, it doesn't matter) for your new application.
