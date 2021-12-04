@@ -20,7 +20,12 @@ Finally, run
 ```bash
 $ bash ./bin/setup_new_project.sh
 ```
-and follow the prompts. This script will link the repo to your new repo while maintaining a reference to the starter app. This way, if we make changes to the starter app, you can still get those changes.
+and follow the prompts. This script will link the repo to your new repo while maintaining a reference to the starter app repo. This way, if we make changes to the starter app repo, you can still get those changes.
+
+To retrieve changes from the starter app run
+```bash
+$ git pull upstream main
+```
 ## Prerequisites
 ### asdf-vm
 Tool versions are managed using `asdf-vm`. You will need to have `asdf-vm` installed first.
@@ -57,11 +62,11 @@ $ cd client && yarn && cd ..
 ```
 
 ### Database
-To setup the database run
+This application uses Postgres. To setup the database run
 ```bash
 $ yarn db:setup
 ```
-This will create the database, run the migrations, and run the seed for you.
+This will create the database, run the migrations, and run the seeds for you.
 
 ### Migrations
 Any time you want make changes to your database schema you will need to generate a migration file
@@ -77,7 +82,7 @@ will run any pending migrations.
 If a team member adds a migrations you will need to run the migrate command to make the changes to your local database as well.
 
 ### Seeds
-Seeds allow you prepopulate your database with data. By default this application prepopulates the `Roles` and the Admin `User` into your database.
+Seeds allow you to pre-populate your database with data. By default this application prepopulates the `Roles` and the Admin `User` into your database.
 
 If you make changes to the seeds file at `server/database/seeds.ts` the make sure that, in the event seeds are run multiple times, you don't end up with duplicate data.
 

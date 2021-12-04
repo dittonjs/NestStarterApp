@@ -6,6 +6,7 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
+    "pullstarterapp": "git pull upstream main",
     "typeorm": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js --config server/database/cli_config.ts",
     "db:start": "pg_ctl status || pg_ctl start",
     "db:stop": "pg_ctl status && pg_ctl stop",

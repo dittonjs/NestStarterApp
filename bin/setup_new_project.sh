@@ -1,6 +1,5 @@
 #!/bin/bash
 
-source .env
 echo "What is the name of your application?"
 read appname
 
