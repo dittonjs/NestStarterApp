@@ -23,6 +23,8 @@ $ npm install -g yarn
 ### .env
 Create a file in the root called `.env` and copy the contents of `.env.example`
 
+In your new `.env` file update the values for each key as you would like
+
 ### Dependencies
 To install the server dependencies run
 ```bash
@@ -43,10 +45,17 @@ $ createdb neststarterappdevelopment # creates a postgres database
 
 Run the migrations
 ```bash
-yarn db:migrate
+$ yarn db:migrate
 ```
 
 Migrations need to be run again everytime a new migration is created
+
+Run the seeds
+```bash
+$ yarn db:seed
+```
+
+This should create roles and your admin level user in your database.
 
 ### SSL
 Create a ssl key and certificate and place them in the root directory

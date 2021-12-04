@@ -12,7 +12,7 @@
     "db:migration:create": "cd server/database/migrations && typeorm migration:create -n ",
     "db:migrate": "yarn db:start && yarn typeorm migration:run",
     "db:migrate:undo": "yarn db:start && yarn typeorm migration:revert",
-    "db:seed": "ts-node ./node_modules/typeorm-seeding/dist/cli.js seed -n cli_config.ts -r $(pwd)/server/database",
+    "db:seed": "yarn db:start && ts-node ./node_modules/typeorm-seeding/dist/cli.js seed -n cli_config.ts -r $(pwd)/server/database",
     "prebuild": "rimraf dist",
     "build": "nest build && yarn client:build",
     "format": "prettier --write \"server/**/*.ts\" \"test/**/*.ts\"",
@@ -82,7 +82,8 @@
       "json",
       "ts"
     ],
-    "rootDir": "server",
+    "moduleDirectories": ["node_modules", "./"],
+    "rootDir": "./server",
     "testRegex": ".*\\.spec\\.ts$",
     "transform": {
       "^.+\\.(t|j)s$": "ts-jest"
