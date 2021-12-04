@@ -43,7 +43,8 @@ export class UsersController {
   async create(@Body() userPayload: CreateUserDto, @Res({ passthrough: true }) res: Response) {
     const newUser = new User();
     newUser.email = userPayload.email;
-    newUser.name = userPayload.name;
+    newUser.firstName = userPayload.firstName;
+    newUser.lastName = userPayload.lastName;
     newUser.passwordHash = await bcrypt.hash(userPayload.password, 10);
     const [role] = await this.rolesService.findByKey(RoleKey.USER);
     const userRole = new UserRole();

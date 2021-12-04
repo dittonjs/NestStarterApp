@@ -36,7 +36,8 @@ export default class Seeds implements Seeder {
       adminUser = new User();
       adminUser.email = process.env.ADMIN_EMAIL;
       adminUser.passwordHash = passwordHash;
-      adminUser.name = 'Site Admin';
+      adminUser.firstName = 'Admin';
+      adminUser.lastName = 'Site';
       const adminUserRole = new UserRole();
       adminUserRole.role = adminRole;
       adminUser.userRoles = [adminUserRole];

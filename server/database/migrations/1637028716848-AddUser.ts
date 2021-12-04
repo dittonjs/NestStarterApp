@@ -13,7 +13,12 @@ export class AddUser1637028716848 implements MigrationInterface {
             isGenerated: true,
           },
           {
-            name: 'name',
+            name: 'firstName',
+            type: 'text',
+            isNullable: false,
+          },
+          {
+            name: 'lastName',
             type: 'text',
             isNullable: false,
           },
