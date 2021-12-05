@@ -14,7 +14,9 @@ export const Admin = () => {
     <div className="p-4">
       <h2 className="text-3xl">Users</h2>
       {users.map((user) => (
-        <div>{user.name}</div>
+        <div key={user.id}>
+          {user.firstName} {user.lastName}
+        </div>
       ))}
     </div>
   );

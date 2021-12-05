@@ -33,7 +33,7 @@ export const Home = () => {
 
   return (
     <div className="p-4">
-      <h1>Welcome {user.name}</h1>
+      <h1>Welcome {user.firstName}</h1>
       <Button type="button" onClick={logout}>
         Logout
       </Button>
