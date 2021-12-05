@@ -132,3 +132,51 @@ $ yarn test:e2e
 # test coverage
 $ yarn test:cov
 ```
+
+## Setup Heroku
+We will deploy all our projects to Heroku. Heroku is a cloud platform that is easy and free to use. Will only need to run these step once for each computer you are working on this semester.
+
+### Create an account
+On heroku.com create an account.
+
+### Install Heroku CLI
+If you don't have the heroku CLI installed you can install it by running. You should only need to do this once on each computer you are working on.
+
+```bash
+$ curl https://cli-assets.heroku.com/install.sh | sh
+```
+
+### Login to CLI
+To log into the CLI run
+```bash
+$ heroku login
+```
+and follow the prompts. After a while, you maybe be prompted to login again which is fine.
+
+
+
+## Deploy Setup
+Follow these steps to deploy and app, you should only have to do this once per application
+
+### Create app in heroku
+1. Go to your heroku dashboard and create a new application.
+
+2. Once your app has been created you will need to enable the Postgres addon. Select the `Resources` tab and search for `Heroku Postgres` addon.
+
+3. On the screen that pops up make sure `Hobby Dev` is selected (that is the free option) and click the submit order button.
+
+4. Click on the `Settings` tab, select the `Reveal Config Vars` button, and verify you have an entry for `DATABASE_URL`.
+
+### Setup config vars
+You will need to add entries in Heroku for each of the production config vars in the `.env` file.
+
+To do this go the `Settings` tab in your app on heroku and click `Reveal Config Vars`. Fill out the key and value for each entry.
+
+**DO NOT MANUALLY SET THE `PORT`, `USE_SSL`, `NODE_ENV`, OR `DATABASE_URL` VARS.** These will be managed for you by Heroku
+
+You should generate new values for the `ENCRYPTION_KEY`, `REFRESH_ENCRYPTION_KEY`, and `ADMIN_PASSWORD` vars. I recommend using a real email address for your `ADMIN_EMAIL`.
+
+All vars should be named the exact same as they are in the `.env` file.
+
+
+
