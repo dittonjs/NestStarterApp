@@ -18,7 +18,7 @@
     "db:setup": "bash bin/create_db.sh && yarn db:migrate && yarn db:seed",
     "prebuild": "rimraf dist",
     "postbuild": "yarn db:migrate && yarn db:seed",
-    "postinstall": "cd client && yarn",
+    "postinstall": "cd client && NODE_ENV=development yarn",
     "build": "nest build && yarn client:build",
     "format": "prettier --write \"server/**/*.ts\" \"test/**/*.ts\"",
     "console": "ts-node -r tsconfig-paths/register server/console.ts",
