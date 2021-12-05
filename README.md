@@ -1,5 +1,6 @@
 # USU CS4610 Nest Starter App
 
+<!-- BEGIN REMOVABLE -->
 ## Description
 A starter app with Postgres, NestJS, and React
 
@@ -21,6 +22,10 @@ Finally, run
 $ bash ./bin/setup_new_project.sh
 ```
 and follow the prompts. This script will link the repo to your new repo while maintaining a reference to the starter app repo. This way, if we make changes to the starter app repo, you can still get those changes.
+
+<!-- END REMOVABLE -->
+
+## Pulling Updates from Starter App
 
 To retrieve changes from the starter app run
 ```bash

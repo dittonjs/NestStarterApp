@@ -9,6 +9,7 @@ read reponame
 
 # replace the title of the README with new app name
 sed -i "s/USU CS4610 Nest Starter App/$appname/" README.md
+sed -i "s/<!-- BEGIN REMOVABLE -->.*<!-- END REMOVABLE -->/$appname/" README.md
 
 git add .
 git commit -m "setup new project '$appname'"
