@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "watch": "parcel watch ./index.js --dist-dir ../static",
-    "build": "parcel build ./index.js --dist-dir ../static"
+    "build": "./node_modules/parcel/lib/cli.js build ./index.js --dist-dir ../static"
   },
   "author": "",
   "license": "ISC",
