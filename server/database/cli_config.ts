@@ -15,6 +15,7 @@ export = process.env.NODE_ENV === 'development'
       entities: ['server/entities/**/*.entity.ts'],
     }
   : {
+      type: 'postgres',
       url: process.env.DATABASE_URL,
       ssl: { rejectUnauthorized: true },
       migrations: ['server/database/migrations/*.ts'],
