@@ -53,15 +53,11 @@ Make sure you create a new file instead of renaming the `.env.example` file.
 In your new `.env` file update the values for each key as you would like
 
 ### Dependencies
-To install the server dependencies run
+To install the both server and client dependencies run
 ```bash
 $ yarn # this is same thing as `yarn install`
 ```
-
-To install the client dependencies run
-```bash
-$ cd client && yarn && cd ..
-```
+Notice that the `client` folder has its own `package.json` file and its own `node_modules`. If you add dependencies for the client make sure to `cd` into the `client` directory before doing `yarn add`
 
 ### Database
 This application uses Postgres. To setup the database run
