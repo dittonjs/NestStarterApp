@@ -13,5 +13,6 @@ export const config: TypeOrmModuleOptions =
     : {
         type: 'postgres',
         url: process.env.DATABASE_URL,
+        autoLoadEntities: true,
         ssl: { rejectUnauthorized: false },
       };
