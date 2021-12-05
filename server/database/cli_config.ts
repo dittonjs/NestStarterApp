@@ -17,14 +17,11 @@ export = process.env.NODE_ENV === 'development'
   : {
       type: 'postgres',
       url: process.env.DATABASE_URL,
-      ssl: { rejectUnauthorized: true },
+      ssl: { rejectUnauthorized: false },
       migrations: ['server/database/migrations/*.ts'],
       seeds: ['server/database/seeds.ts'],
       cli: {
         migrationsDir: 'server/database/migrations',
       },
       entities: ['server/entities/**/*.entity.ts'],
-      extra: {
-        ssl: true,
-      },
     };
