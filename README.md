@@ -1,6 +1,5 @@
 # USU CS4610 Nest Starter App
 
-<!-- BEGIN REMOVABLE -->
 ## Description
 A starter app with Postgres, NestJS, and React
 
@@ -9,7 +8,7 @@ This app is designed to used as a starting point for another application so you 
 ```bash
 $ git clone git@github.com:dittonjs/NestStarterApp.git <YourAppName>
 ```
-
+a
 Replace your app name with the name of your app, for example
 ```bash
 $ git clone git@github.com:dittonjs/NestStarterApp.git SpyChat
@@ -22,8 +21,6 @@ Finally, run
 $ bash ./bin/setup_new_project.sh
 ```
 and follow the prompts. This script will link the repo to your new repo while maintaining a reference to the starter app repo. This way, if we make changes to the starter app repo, you can still get those changes.
-
-<!-- END REMOVABLE -->
 
 ## Pulling Updates from Starter App
 
@@ -114,7 +111,6 @@ Enter `US` for the country code. Where this key will only be used for developmen
 ## Running the app
 To start the server run
 ```bash
-# watch mode
 $ yarn start:dev
 ```
 
@@ -124,6 +120,7 @@ $ yarn client:watch
 ```
 
 ## Test
+**WORK IN PROGRESS**
 
 ```bash
 # unit tests
