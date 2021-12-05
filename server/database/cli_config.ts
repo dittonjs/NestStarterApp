@@ -24,4 +24,7 @@ export = process.env.NODE_ENV === 'development'
         migrationsDir: 'server/database/migrations',
       },
       entities: ['server/entities/**/*.entity.ts'],
+      extra: {
+        ssl: true,
+      },
     };
