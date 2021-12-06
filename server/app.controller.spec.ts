@@ -13,9 +13,9 @@ describe('AppController', () => {
     appController = app.get<AppController>(AppController);
   });
 
-  describe('root', () => {
-    it('should return "Hello World!"', () => {
-      expect(appController.index()).toBe('Hello World!');
+  describe('index', () => {
+    it('should run without crashing', () => {
+      expect(appController.index()).toBeUndefined();
     });
   });
 });

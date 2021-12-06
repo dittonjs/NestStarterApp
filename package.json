@@ -89,7 +89,10 @@
       "json",
       "ts"
     ],
-    "moduleDirectories": ["node_modules", "./"],
+    "moduleNameMapper": {
+      "^server/(.*)$": "<rootDir>/$1"
+    },
+    "moduleDirectories": ["node_modules"],
     "rootDir": "./server",
     "testRegex": ".*\\.spec\\.ts$",
     "transform": {
