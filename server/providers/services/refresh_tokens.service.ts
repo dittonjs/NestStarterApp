@@ -14,7 +14,7 @@ export class RefreshTokensService {
     return this.refreshTokenRespository.save(refreshToken);
   }
 
-  destroy(refreshToken: RefreshToken) {
-    return this.refreshTokenRespository.remove(refreshToken);
+  destroy(...refreshTokens: RefreshToken[]) {
+    return this.refreshTokenRespository.remove(refreshTokens);
   }
 }

@@ -25,14 +25,14 @@ export class RefreshTokensController {
     const tokenBody = this.jwtService.parseRefreshToken(refreshToken) as RefreshTokenBody;
 
     const user = await this.usersService.find(tokenBody.userId, ['refreshTokens', 'userRoles']);
-    const userRoles = await this.rolesService.findByIds(user.userRoles.map((ur) => ur.roleId));
+    const roles = await this.rolesService.findByIds(user.userRoles.map((ur) => ur.roleId));
 
     const userRefreshToken = user.refreshTokens.find((t) => t.id === tokenBody.id);
     if (!userRefreshToken) {
       throw new HttpException('User refresh token not found', 401);
     }
 
-    const token = this.jwtService.issueToken({ userId: user.id, roles: userRoles.map((r) => r.key) });
+    const token = this.jwtService.issueToken({ userId: user.id, roles: roles.map((r) => r.key) });
     return { token };
   }
 }

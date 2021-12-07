@@ -8,6 +8,8 @@ import { RefreshToken } from 'server/entities/refresh_token.entity';
 import { Skip } from 'server/decorators/skip.decorator';
 import { AuthGuard } from 'server/providers/guards/auth.guard';
 import { RolesService } from 'server/providers/services/roles.service';
+import { JwtBody } from 'server/decorators/jwt_body.decorator';
+import { JwtBodyDto } from 'server/dto/jwt_body.dto';
 
 // this is kind of a misnomer because we are doing token based auth
 // instead of session based auth
@@ -53,7 +55,9 @@ export class SessionsController {
   }
 
   @Delete('/sessions')
-  async destroy(@Res({ passthrough: true }) res: Response) {
+  async destroy(@Res({ passthrough: true }) res: Response, @JwtBody() jwtBody: JwtBodyDto) {
+    const user = await this.usersService.find(jwtBody.userId, ['refreshTokens']);
+    await this.refreshTokenService.destroy(...user.refreshTokens);
     res.clearCookie('_refresh_token');
     return { success: true };
   }
