@@ -130,7 +130,7 @@ $ yarn test:cov
 ```
 
 ## Setup Heroku
-We will deploy all our projects to Heroku. Heroku is a cloud platform that is easy and free to use. Will only need to run these step once for each computer you are working on this semester.
+We will deploy all our projects to Heroku. Heroku is a cloud platform that is easy and free to use. You will only need to run these step once for each computer you are working on this semester.
 
 ### Create an account
 On heroku.com create an account.
@@ -173,6 +173,24 @@ To do this go the `Settings` tab in your app on heroku and click `Reveal Config 
 You should generate new values for the `ENCRYPTION_KEY`, `REFRESH_ENCRYPTION_KEY`, and `ADMIN_PASSWORD` vars. I recommend using a real email address for your `ADMIN_EMAIL`.
 
 All vars should be named the exact same as they are in the `.env` file.
+
+### Link to Heroku
+You publish to Heroku using `git`. Run the following command to add the heroku remote
+```bash
+$ heroku git:remote -a <your app name>
+```
+If your app name in Heroku was `spy-chat` then you would run
+```bash
+$ heroku git:remote -a spy-chat
+```
+
+## Deploying
+We finally made it! To deploy your app to Heroku run
+```bash
+$ git push heroku main
+```
+and thats it!
+
 
 
 
