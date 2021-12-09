@@ -10,12 +10,16 @@ export class Api {
   authToken = null;
 
   makeRequest(url, method, body) {
+    const options = {};
+    if (method === 'POST' || method === 'PUT') {
+      options.body = JSON.stringify(body);
+    }
     return fetch(url, {
       method,
       headers: {
         Authorization: `Bearer ${this.authToken}`,
       },
-      body,
+      ...options,
     }).then((res) => res.json());
   }
 
