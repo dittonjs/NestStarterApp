@@ -18,6 +18,7 @@ export class Api {
       method,
       headers: {
         Authorization: `Bearer ${this.authToken}`,
+        'Content-Type': 'application/json',
       },
       ...options,
     }).then((res) => res.json());
