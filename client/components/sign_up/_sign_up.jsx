@@ -1,18 +1,21 @@
 import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router';
 import { AuthContext } from '../../utils/auth_context';
+import { ApiContext } from '../../utils/api_context';
 import { Paper } from '../common/paper';
 import { Input } from '../common/input';
 import { Button } from '../common/button';
 
 export const SignUp = () => {
   const [, setAuthToken] = useContext(AuthContext);
+  const api = useContext(ApiContext);
   const navigate = useNavigate();
-  const [name, setName] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [emailConfirmation, setEmailConfirmation] = useState('');
   const [password, setPassword] = useState('');
-  const [passwordConfiramation, setPasswordConfirmation] = useState('');
+  const [passwordConfirmation, setPasswordConfirmation] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
 
   const signUp = async () => {
@@ -28,38 +31,37 @@ export const SignUp = () => {
       setErrorMessage('Password cannot be blank');
       return;
     }
-    if (password !== passwordConfiramation) {
+    if (password !== passwordConfirmation) {
       setErrorMessage('Password does not match');
       return;
     }
-    if (name === '') {
-      setErrorMessage('Name cannot be blank.');
+    if (firstName === '') {
+      setErrorMessage('First name cannot be blank.');
       return;
     }
-    const res = await fetch('/users', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        name,
-        email,
-        password,
-      }),
-    });
-    if (res.status === 201) {
-      const result = await res.json();
-      setAuthToken(result.token);
-      navigate('/');
+    if (lastName === '') {
+      setErrorMessage('Last name cannot be blank.');
+      return;
     }
+
+    const { token } = await api.post('/users', {
+      firstName,
+      lastName,
+      email,
+      password,
+    });
+    setAuthToken(token);
+    navigate('/');
   };
 
   return (
     <div className="flex flex-row justify-center m-4">
       <div className="w-96">
         <Paper>
-          <div>Name</div>
-          <Input type="text" value={name} onChange={(e) => setName(e.target.value)} />
+          <div>First Name</div>
+          <Input type="text" value={firstName} onChange={(e) => setFirstName(e.target.value)} />
+          <div>Last Name</div>
+          <Input type="text" value={lastName} onChange={(e) => setLastName(e.target.value)} />
           <div>Email</div>
           <Input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
           <div>Confirm Email</div>
@@ -69,7 +71,7 @@ export const SignUp = () => {
           <div>Confirm Password</div>
           <Input
             type="password"
-            value={passwordConfiramation}
+            value={passwordConfirmation}
             onChange={(e) => setPasswordConfirmation(e.target.value)}
           />
           <div className="flex flex-row justify-end mt-2">
