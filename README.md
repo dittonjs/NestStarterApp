@@ -29,10 +29,20 @@ To retrieve changes from the starter app run
 $ git pull upstream main
 ```
 ## Prerequisites
+### VSCode
+I know there are bunch of editors but trust me, VS Code will make your life easier, mostly becuase it is what I use and if you have issues I can help you. If you use something else IT WILL BE YOUR RESPONSIBILITY TO MAKE SURE IT IS CONFIGURED PROPERLY.
+
+Look [here](/VSCODE.md) for information about which extensions and settings we will use.
+
+### WSL
+If you are on Windows you will need to install WSL2 you must be on windows 10 or higher.
+You can find the instructions on how to set this up [here.](/WSL_SETUP.md)
+
 ### asdf-vm
-Tool versions are managed using `asdf-vm`. You will need to have `asdf-vm` installed first.
+Tool versions are managed using `asdf-vm`. You will need to have `asdf-vm` installed first. You can install it by following the instructions [here.](/ASDFVM_SETUP.md)
 
 ## Setup
+Make sure your have navigated to the project directory in your terminal.
 ### Tool versions
 Install the tool versions by running
 ```bash
@@ -190,7 +200,3 @@ We finally made it! To deploy your app to Heroku run
 $ git push heroku main
 ```
 and thats it!
-
-
-
-
