@@ -13,6 +13,9 @@ export class UserRole {
   @Column()
   userId: number;
 
+  @Column()
+  contextId: string;
+
   @ManyToOne(() => Role, (role) => role.userRoles)
   role: Role;
 
