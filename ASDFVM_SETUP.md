@@ -1,10 +1,10 @@
 # ASDFVM Setup
-1. Run 
+1. Run
 ```bash
 $ git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.8.1
 ```
 
-2. Run 
+2. Run
 ```bash
 $ code ~/.bashrc
 ```
@@ -35,7 +35,7 @@ $ brew install gcc readline zlib curl ossp-uuid
 
 Ubuntu
 ```
-$ sudo apt-get install linux-headers-$(uname -r) build-essential libssl-dev libreadline-dev zlib1g-dev libcurl4-openssl-dev uuid-dev
+$ sudo apt-get install build-essential libssl-dev libreadline-dev zlib1g-dev libcurl4-openssl-dev uuid-dev
 ```
 
 2. Install the plugin
