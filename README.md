@@ -4,6 +4,7 @@
 A starter app with Postgres, NestJS, and React
 
 ## Cloning the project
+IMPORTANT Windows users should setup WSL first before cloning. See [WSL_SETUP.md](/WSL_SETUP.md)
 This app is designed to used as a starting point for another application so you will want to clone the project into a folder that matches your app. Run
 ```bash
 $ git clone git@github.com:dittonjs/NestStarterApp.git <YourAppName>
