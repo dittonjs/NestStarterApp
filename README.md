@@ -163,7 +163,7 @@ and follow the prompts. After a while, you maybe be prompted to login again whic
 
 
 ## Deploy Setup
-Follow these steps to deploy and app, you should only have to do this once per application
+Follow these steps to setup your app for deploy, you should only have to do this once per application
 
 ### Create app in heroku
 1. Go to your heroku dashboard and create a new application.
