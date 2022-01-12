@@ -4,20 +4,11 @@
 $ git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.8.1
 ```
 
-2. Run
-```bash
-$ code ~/.bashrc
-```
-This assumes you have VS Code installed on your computer (if you don't then install it by searching for it online and installing it).
+1. Visit this [link](https://asdf-vm.com/guide/getting-started.html#_3-install-asdf) and follow the installation instructions for your OS and terminal. For Windows with WSL and most linux distros you will look at the "Bash & Git" section. For Mac you will look either at the "Bash & Git (macOS)" or the "ZSH & Git" section depending on your default terminal.
 
-3. Add the following lines at the end of the file and save it.
-```bash
-. $HOME/.asdf/asdf.sh
-. $HOME/.asdf/completions/asdf.bash
-```
-4. If you are on Mac make sure you have homebrew installed.
+1. If you are on Mac make sure you have homebrew installed.
 `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
-5. Close your terminal and reopen it.
+1. Close your terminal and reopen it.
 
 ## Installing the NodeJS plugin
 1. Install the plugin
