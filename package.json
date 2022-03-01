@@ -92,7 +92,9 @@
     "moduleNameMapper": {
       "^server/(.*)$": "<rootDir>/$1"
     },
-    "moduleDirectories": ["node_modules"],
+    "moduleDirectories": [
+      "node_modules"
+    ],
     "rootDir": "./server",
     "testRegex": ".*\\.spec\\.ts$",
     "transform": {
@@ -105,6 +107,6 @@
     "testEnvironment": "node"
   },
   "engines": {
-    "node": "14.18"
+    "node": "16.14"
   }
 }
