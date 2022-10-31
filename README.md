@@ -148,7 +148,6 @@ heroku login
 and follow the prompts. After a while, you maybe be prompted to login again which is fine.
 
 
-
 ## Deploy Setup
 Follow these steps to setup your app for deploy, you should only have to do this once per application
 
