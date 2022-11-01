@@ -3,13 +3,14 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "watch": "parcel watch ./index.js --dist-dir ../static",
-    "build": "parcel build ./index.js --dist-dir ../static"
+    "watch": "parcel watch ./index.js --dist-dir ../server/static",
+    "build": "parcel build ./index.js --dist-dir ../server/static"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "autoprefixer": "^10.4.0",
+    "buffer": "^6.0.3",
     "parcel": "^2.0.1",
     "postcss": "^8.3.11",
     "tailwindcss": "^2.2.19"
