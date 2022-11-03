@@ -1,5 +1,6 @@
-import { CanActivate, SetMetadata } from '@nestjs/common';
-import { Class } from 'src/dto/class.dto';
+import { CanActivate, SetMetadata } from "@nestjs/common";
+import { Class } from "src/dto/class.dto";
 
-export const SKIP_KEY = 'skip';
-export const Skip = (...guards: Class<CanActivate>[]) => SetMetadata(SKIP_KEY, guards);
+export const SKIP_KEY = "skip";
+export const Skip = (...guards: Class<CanActivate>[]) =>
+  SetMetadata(SKIP_KEY, guards);

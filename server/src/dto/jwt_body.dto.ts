@@ -1,4 +1,4 @@
-import { RoleKey } from '@prisma/client';
+import { RoleKey } from "@prisma/client";
 
 export interface JwtBodyDto {
   userId: number;

@@ -1,9 +1,6 @@
 import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router';
 import { AuthContext } from '../../utils/auth_context';
-import { Paper } from '../common/paper';
-import { Input } from '../common/input';
-import { Button } from '../common/button';
 
 export const SignIn = () => {
   const [, setAuthToken] = useContext(AuthContext);
@@ -36,23 +33,18 @@ export const SignIn = () => {
   };
 
   return (
-    <div className="flex flex-row justify-center m-4">
-      <div className="w-96">
-        <Paper>
-          <div>Email</div>
-          <Input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-          <div>Password</div>
-          <Input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-          <div className="flex flex-row justify-end mt-2">
-            <Button type="button" onClick={goToSignUp}>
-              Sign up
-            </Button>
-            <div className="pl-2" />
-            <Button type="button" onClick={signIn}>
-              Sign in
-            </Button>
-          </div>
-        </Paper>
+    <div>
+      <div>Email</div>
+      <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+      <div>Password</div>
+      <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+      <div>
+        <button className="button" type="button" onClick={goToSignUp}>
+          Sign up
+        </button>
+        <button className="button" type="button" onClick={signIn}>
+          Sign in
+        </button>
       </div>
     </div>
   );
