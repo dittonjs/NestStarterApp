@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router';
 import { ApiContext } from '../../utils/api_context';
 import { AuthContext } from '../../utils/auth_context';
 import { RolesContext } from '../../utils/roles_context';
-import { Ping } from './ping';
+// import { Ping } from './ping';
 
 export const Home = () => {
   const [, setAuthToken] = useContext(AuthContext);
