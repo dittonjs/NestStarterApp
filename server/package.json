@@ -1,0 +1,110 @@
+{
+  "name": "nest-starter-app",
+  "version": "0.0.1",
+  "description": "",
+  "author": "",
+  "private": true,
+  "license": "UNLICENSED",
+  "scripts": {
+    "pullstarterapp": "git pull upstream main",
+    "db:start": "pg_ctl status || pg_ctl start",
+    "db:stop": "pg_ctl status && pg_ctl stop",
+    "db:migrate": "yarn db:start && npx prisma migrate dev",
+    "db:migrate:prod": "npx prisma migrate deploy",
+    "db:seed": "yarn db:start && npx prisma db seed",
+    "db:seed:prod": "ts-node ./node_modules/typeorm-seeding/dist/cli.js seed -n cli_config.ts -r \"$(pwd)/database\"",
+    "db:reset": "yarn db:start && npx prisma migrate reset",
+    "db:setup": "bash ../bin/create_db.sh && yarn db:migrate && yarn db:seed",
+    "prebuild": "rimraf dist",
+    "postbuild": "yarn db:migrate:prod && yarn db:seed:prod",
+    "build": "nest build && yarn client:build",
+    "console": "ts-node -r tsconfig-paths/register ./console.ts",
+    "start": "nest start",
+    "start:dev": "yarn db:start && nest start --watch",
+    "start:debug": "yarn db:start && nest start --debug --watch",
+    "start:prod": "node dist/main",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:cov": "jest --coverage",
+    "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
+    "test:e2e": "jest --config ./test/jest-e2e.json",
+    "client:build": "cd ../client && yarn build",
+    "client:watch": "cd ../client && yarn watch"
+  },
+  "dependencies": {
+    "@nestjs/common": "^9.1.6",
+    "@nestjs/core": "^9.1.6",
+    "@nestjs/platform-express": "^9.1.6",
+    "@nestjs/platform-socket.io": "^9.1.6",
+    "@nestjs/serve-static": "^3.0.0",
+    "@nestjs/websockets": "^9.1.6",
+    "@prisma/client": "^4.5.0",
+    "@types/lodash": "^4.14.186",
+    "bcrypt": "^5.1.0",
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^16.0.3",
+    "hbs": "^4.1.2",
+    "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.21",
+    "morgan": "^1.10.0",
+    "pg": "^8.8.0",
+    "reflect-metadata": "^0.1.13",
+    "rimraf": "^3.0.2",
+    "rxjs": "^7.5.7"
+  },
+  "devDependencies": {
+    "@nestjs/cli": "^9.1.5",
+    "@nestjs/schematics": "^9.0.3",
+    "@nestjs/testing": "^9.1.6",
+    "@types/cookie-parser": "^1.4.3",
+    "@types/express": "^4.17.14",
+    "@types/jest": "^29.2.0",
+    "@types/node": "^18.11.7",
+    "@types/supertest": "^2.0.12",
+    "@typescript-eslint/eslint-plugin": "^5.41.0",
+    "@typescript-eslint/parser": "^5.41.0",
+    "await-outside": "^3.0.0",
+    "eslint": "^8.26.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "jest": "^29.2.2",
+    "prettier": "^2.7.1",
+    "prisma": "^4.5.0",
+    "purdy": "^3.5.1",
+    "repl": "^0.1.3",
+    "supertest": "^6.3.1",
+    "ts-jest": "^29.0.3",
+    "ts-node": "^10.9.1",
+    "tsconfig-paths": "^4.1.0",
+    "typescript": "^4.8.4"
+  },
+  "prisma": {
+    "seed": "ts-node prisma/seeds.ts"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "ts"
+    ],
+    "moduleNameMapper": {
+      "./(.*)$": "<rootDir>/$1"
+    },
+    "moduleDirectories": [
+      "node_modules"
+    ],
+    "rootDir": "./",
+    "testRegex": ".*\\.spec\\.ts$",
+    "transform": {
+      "^.+\\.(t|j)s$": "ts-jest"
+    },
+    "collectCoverageFrom": [
+      "**/*.(t|j)s"
+    ],
+    "coverageDirectory": "../coverage",
+    "testEnvironment": "node"
+  },
+  "engines": {
+    "node": "18.12"
+  }
+}

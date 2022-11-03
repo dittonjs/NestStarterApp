@@ -1,5 +1,5 @@
-@tailwind base;
-
-@tailwind components;
-
-@tailwind utilities;
+.input {
+  border: 2px solid gray;
+  border-radius: 4px;
+  padding: 4px;
+}

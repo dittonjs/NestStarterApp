@@ -3,8 +3,7 @@ import { useNavigate } from 'react-router';
 import { ApiContext } from '../../utils/api_context';
 import { AuthContext } from '../../utils/auth_context';
 import { RolesContext } from '../../utils/roles_context';
-import { Button } from '../common/button';
-import { Ping } from './ping';
+// import { Ping } from './ping';
 
 export const Home = () => {
   const [, setAuthToken] = useContext(AuthContext);
@@ -33,19 +32,19 @@ export const Home = () => {
   }
 
   return (
-    <div className="p-4">
+    <div>
       <h1>Welcome {user.firstName}</h1>
-      <Button type="button" onClick={logout}>
+      <button type="button" onClick={logout}>
         Logout
-      </Button>
+      </button>
       {roles.includes('admin') && (
-        <Button type="button" onClick={() => navigate('/admin')}>
+        <button type="button" onClick={() => navigate('/admin')}>
           Admin
-        </Button>
+        </button>
       )}
-      <section>
+      {/* <section>
         <Ping />
-      </section>
+      </section> */}
     </div>
   );
 };

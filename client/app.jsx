@@ -20,12 +20,15 @@ export const App = () => {
   const api = useApi(authToken);
 
   // get initial jwt using refresh token
-  useEffect(async () => {
-    const result = await api.get('/refresh_token');
-    if (result.token) {
-      setAuthToken(result.token);
-    }
-    setLoading(false);
+  useEffect(() => {
+    const makeRequest = async () => {
+      const result = await api.get('/refresh_token');
+      if (result.token) {
+        setAuthToken(result.token);
+      }
+      setLoading(false);
+    };
+    makeRequest();
   }, []);
 
   const jwtPayload = parseJwt(authToken);

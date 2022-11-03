@@ -3,20 +3,19 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "watch": "parcel watch ./index.js --dist-dir ../static",
-    "build": "parcel build ./index.js --dist-dir ../static"
+    "watch": "parcel watch ./index.js --dist-dir ../server/static",
+    "build": "parcel build ./index.js --dist-dir ../server/static"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "autoprefixer": "^10.4.0",
+    "buffer": "^6.0.3",
     "parcel": "^2.0.1",
-    "postcss": "^8.3.11",
-    "tailwindcss": "^2.2.19"
+    "process": "^0.11.10"
   },
   "dependencies": {
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-router-dom": "6",
     "socket.io-client": "^4.4.1"
   }

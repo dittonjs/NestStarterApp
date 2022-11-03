@@ -1,5 +1,4 @@
-import { useState, useEffect, useRef, useContext } from 'react';
-import { Button } from '../common/button';
+import { useState, useEffect, useContext } from 'react';
 import { io } from 'socket.io-client';
 import { AuthContext } from '../../utils/auth_context';
 
@@ -72,12 +71,11 @@ export const Ping = () => {
       <section>
         <input
           type="text"
-          className="border-2 border-gray-700 p-2 rounded"
           value={key}
           onChange={(e) => setKey(e.target.value)}
         />
-        <Button onClick={joinRoom}>Connect To Room</Button>
-        <Button onClick={sendPing}>Send Ping</Button>
+        <button onClick={joinRoom}>Connect To Room</button>
+        <button onClick={sendPing}>Send Ping</button>
       </section>
     </>
   );
